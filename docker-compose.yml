@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: railway
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: CUPdmUWmG3lZE5dX0Oov
+
+  web:
+    build: .
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
